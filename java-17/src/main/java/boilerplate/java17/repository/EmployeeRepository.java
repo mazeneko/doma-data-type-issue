@@ -26,7 +26,7 @@ public class EmployeeRepository {
     return entityql.from(e).where(c -> c.eq(e.id, id)).fetchOne();
   }
 
-  public List<Employee> selectByName(String name){
+  public List<Employee> selectByName(Employee.Name name){
     var e = new Employee_();
     return entityql.from(e).where(c -> c.eq(e.name, name)).fetch();
   }

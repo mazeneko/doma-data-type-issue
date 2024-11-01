@@ -1,5 +1,6 @@
 package boilerplate.java17.entity;
 
+import org.seasar.doma.Domain;
 import org.seasar.doma.Entity;
 import org.seasar.doma.GeneratedValue;
 import org.seasar.doma.GenerationType;
@@ -16,7 +17,7 @@ public class Employee {
   @SequenceGenerator(sequence = "EMPLOYEE_SEQ")
   public Integer id;
 
-  public String name;
+  public Name name;
 
   public Integer age;
 
@@ -25,5 +26,14 @@ public class Employee {
   @Override
   public String toString() {
     return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", version=" + version + "]";
+  }
+
+  @Domain(valueType = String.class, accessorMethod = "value")
+  public record Name(String value) {
+    public Name {
+      if(value.isEmpty()){
+        throw new IllegalArgumentException();
+      }
+    }
   }
 }

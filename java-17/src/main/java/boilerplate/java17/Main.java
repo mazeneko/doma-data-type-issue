@@ -1,6 +1,7 @@
 package boilerplate.java17;
 
 import boilerplate.java17.dao.AppDaoImpl;
+import boilerplate.java17.entity.Employee;
 import boilerplate.java17.repository.EmployeeRepository;
 import org.seasar.doma.jdbc.Config;
 import org.seasar.doma.jdbc.dialect.H2Dialect;
@@ -22,7 +23,7 @@ public class Main {
     tm.required(
         () -> {
           var repository = new EmployeeRepository(config);
-          var employees = repository.selectByName("ALLEN");
+          var employees = repository.selectByName(new Employee.Name("ALLEN"));
           System.out.println(employees);
         });
   }
