@@ -22,9 +22,8 @@ public class Main {
     tm.required(
         () -> {
           var repository = new EmployeeRepository(config);
-          var employee = repository.selectById(1);
-          employee.age += 1;
-          repository.update(employee);
+          var employees = repository.selectByName("ALLEN");
+          System.out.println(employees);
         });
   }
 
