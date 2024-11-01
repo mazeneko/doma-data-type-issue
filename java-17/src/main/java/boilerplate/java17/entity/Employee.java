@@ -1,6 +1,6 @@
 package boilerplate.java17.entity;
 
-import org.seasar.doma.Domain;
+import org.seasar.doma.DataType;
 import org.seasar.doma.Entity;
 import org.seasar.doma.GeneratedValue;
 import org.seasar.doma.GenerationType;
@@ -28,7 +28,7 @@ public class Employee {
     return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", version=" + version + "]";
   }
 
-  @Domain(valueType = String.class, accessorMethod = "value")
+  @DataType
   public record Name(String value) {
     public Name {
       if(value.isEmpty()){
